@@ -1,6 +1,6 @@
 // - Software Name - "Easy Business Travel Booking"
 
-// - Software Version - 0.1.0
+// - Software Version - 0.2.0
 
 // - Linguagem de progamação utilizada no projeto
 Java - JDK 8
