@@ -1,3 +1,18 @@
 .setBackground{
-	-fx-background-image: url("../images/loginScreenBg.png") 
+	-fx-background-image: url("../images/loginScreenBg.png"); 
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
 }
+
+.setButtonStyle {
+    -fx-background-color:
+        linear-gradient(#FF3A28 0%, #E63525 50%, #BF2C1F 100%),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+}
+

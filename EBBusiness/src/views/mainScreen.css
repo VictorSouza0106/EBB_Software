@@ -1,0 +1,60 @@
+.setBackground{
+	-fx-background-image: url("../images/mainScreenBg.png") 
+}
+
+.setNavBarColor{
+	-fx-background-color: darkgrey;
+}
+
+.setLogoImg{
+	-fx-background-image: url("../images/EBBusiness_logo.png"); 
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
+}
+
+.setNavButtonStyle {
+    -fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20 10 20;
+}
+
+.setFormStyle{
+	-fx-background-color: #c9c9c9;
+}
+
+.setInternFormStyle{
+	-fx-background-color: #A5A6A7
+	;
+}
+
+.setButtonFormStyleSucess {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #0B8000 0%, #0B8000 100%),
+        #13E600,
+        #13E600,
+        radial-gradient(center 50% 50%, radius 100%, #10BF00, #10BF00);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+.setButtonFormStyleClear {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #008071 0%, #008071 100%),
+        #00E6CB,
+        #00E6CB,
+        radial-gradient(center 50% 50%, radius 100%, #00BFA9, #00BFA9);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    }
+   

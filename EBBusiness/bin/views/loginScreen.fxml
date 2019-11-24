@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.85" prefHeight="704.0" prefWidth="500.0" styleClass="setBackground" stylesheets="@loginScreen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.loginScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.85" prefHeight="750.0" prefWidth="500.0" styleClass="setBackground" stylesheets="@loginScreen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginScreenController">
    <children>
-      <Button fx:id="btnInput" layoutX="97.0" layoutY="569.0" mnemonicParsing="false" onAction="#isValid" prefHeight="45.0" prefWidth="300.0" stylesheets="@loginScreen.css" text="Entrar" />
+      <Button fx:id="btnInput" layoutX="97.0" layoutY="569.0" mnemonicParsing="false" onAction="#isValid" prefHeight="45.0" prefWidth="300.0" styleClass="setButtonStyle" stylesheets="@loginScreen.css" text="Entrar" textFill="WHITE" />
       <TextField fx:id="nameInput" layoutX="97.0" layoutY="345.0" prefHeight="40.0" prefWidth="300.0" promptText="Nome do Usuário">
          <padding>
             <Insets left="10.0" />

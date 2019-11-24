@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="PaneLoading" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#BringMainScreen" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+   <children>
+      <Pane fx:id="MainScreenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="setBackground" stylesheets="@mainScreen.css">
+         <children>
+            <Pane id="hideShow_navBar" fx:id="navBar" prefHeight="800.0" prefWidth="215.0" styleClass="setNavBarColor" stylesheets="@mainScreen.css">
+               <children>
+                  <Button fx:id="newOrderBtn" layoutY="180.0" mnemonicParsing="false" onAction="#newOrderAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Novo Pedido">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="historyBtn" layoutY="230.0" mnemonicParsing="false" onAction="#historyAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Histórico">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="messageBtn" layoutY="280.0" mnemonicParsing="false" onAction="#messageAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Mensagens">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="financalBtn" layoutY="330.0" mnemonicParsing="false" onAction="#financalAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Financeiro">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="infoBtn" layoutY="380.0" mnemonicParsing="false" onAction="#infoAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Informações">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="helpBtn" layoutY="430.0" mnemonicParsing="false" onAction="#helpAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Ajuda">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Pane prefHeight="180.0" prefWidth="215.0" style="-fx-background-color: lightseagreen;" stylesheets="@mainScreen.css">
+                     <children>
+                        <ImageView fitHeight="140.0" fitWidth="215.0" layoutX="39.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/EBBusiness_Logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="52.0" layoutY="146.0" text="BEM-VINDO" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <ImageView fx:id="showBtn" fitHeight="78.0" fitWidth="36.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#show_navBar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/menuIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="hideBtn" fitHeight="78.0" fitWidth="36.0" layoutX="220.0" layoutY="5.0" onMouseClicked="#hide_navBar" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/menuIcon.png" />
+               </image>
+            </ImageView>
+            <AnchorPane prefHeight="20.0" prefWidth="1200.0">
+               <children>
+                  <Label fx:id="companyLabel" contentDisplay="CENTER" layoutX="357.0" layoutY="8.0" text="qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="357.0">
+                     <font>
+                        <Font name="Calibri" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

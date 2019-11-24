@@ -2,53 +2,193 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="MainScreenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mainScreenController"> 
+<Pane fx:id="PaneLoading" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#BringMainScreen" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
    <children>
-      <Pane prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: RED;">
+      <Pane fx:id="MainScreenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="setBackground" stylesheets="@mainScreen.css">
          <children>
-            <Button fx:id="hideBtn" layoutX="220.0" layoutY="5.0" mnemonicParsing="false" onAction="#hide_navBar" prefHeight="40.0" prefWidth="40.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="showBtn" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#show_navBar" prefHeight="40.0" prefWidth="40.0" visible="false">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <Pane id="hideShow_navBar" fx:id="navBar" prefHeight="800.0" prefWidth="215.0" styleClass="setNavBarColor" stylesheets="@mainScreen.css" visible="false">
+               <children>
+                  <Button fx:id="newOrderBtn" layoutY="180.0" mnemonicParsing="false" onAction="#newOrderAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Novo Pedido">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="historyBtn" layoutY="230.0" mnemonicParsing="false" onAction="#historyAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Histórico">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="messageBtn" layoutY="280.0" mnemonicParsing="false" onAction="#messageAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Mensagens">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="financalBtn" layoutY="330.0" mnemonicParsing="false" onAction="#financalAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Financeiro">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="infoBtn" layoutY="380.0" mnemonicParsing="false" onAction="#infoAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Informações">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="helpBtn" layoutY="430.0" mnemonicParsing="false" onAction="#helpAction" prefHeight="50.0" prefWidth="215.0" styleClass="setNavButtonStyle" stylesheets="@mainScreen.css" text="Ajuda">
+                     <font>
+                        <Font name="Calibri" size="22.0" />
+                     </font>
+                  </Button>
+                  <Pane prefHeight="180.0" prefWidth="215.0" style="-fx-background-color: lightseagreen;" stylesheets="@mainScreen.css">
+                     <children>
+                        <ImageView fitHeight="140.0" fitWidth="215.0" layoutX="39.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/EBBusiness_Logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="52.0" layoutY="146.0" text="BEM-VINDO" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <AnchorPane prefHeight="20.0" prefWidth="1200.0">
+               <children>
+                  <Label fx:id="companyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="10.0" prefHeight="30.0" prefWidth="194.0" text="Company Name" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font name="Calibri" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </Pane>
-      <Pane id="hideShow_navBar" fx:id="navBar" prefHeight="800.0" prefWidth="215.0" style="-fx-background-color: BLUE;">
+      <ImageView fx:id="showBtn" fitHeight="78.0" fitWidth="36.0" onMouseClicked="#show_navBar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/menuIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hideBtn" fitHeight="78.0" fitWidth="36.0" layoutX="230.0" onMouseClicked="#hide_navBar" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/menuIcon.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="newOrderForm" layoutX="236.0" layoutY="130.0" prefHeight="650.0" prefWidth="930.0" styleClass="setFormStyle" stylesheets="@mainScreen.css">
          <children>
-            <Button layoutY="40.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Novo Pedido">
-               <font>
-                  <Font name="Calibri" size="22.0" />
-               </font></Button>
-            <Button layoutY="95.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Histórico">
-               <font>
-                  <Font name="Calibri" size="22.0" />
-               </font></Button>
-            <Button layoutY="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Mensagens">
-               <font>
-                  <Font name="Calibri" size="22.0" />
-               </font></Button>
-            <Button layoutY="205.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Financeiro">
-               <font>
-                  <Font name="Calibri" size="22.0" />
-               </font></Button>
-            <Button layoutY="260.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Informações">
-               <font>
-                  <Font name="Calibri" size="22.0" />
-               </font>
-            </Button>
-            <Button layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="215.0" text="Ajuda">
-               <font>
-                  <Font name="Calibri" size="22.0" />
-               </font>
-            </Button>
+            <Pane prefHeight="42.0" prefWidth="930.0" style="-fx-background-color: GREEN;">
+               <children>
+                  <Label layoutX="317.0" layoutY="3.0" prefHeight="36.0" prefWidth="297.0" text="Solicitação de orçamento">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="20.0" layoutY="50.0" prefHeight="585.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="FlightBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BringFlightForm" prefHeight="115.0" prefWidth="180.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="510.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="180.0" />
+                  <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="180.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="180.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="385.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="180.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="flightForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css">
+               <children>
+                  <TextField fx:id="originInput" layoutX="25.0" layoutY="109.0" prefHeight="36.0" prefWidth="257.0" promptText="Escolha uma origem">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="destinyInput" layoutX="410.0" layoutY="109.0" prefHeight="30.0" prefWidth="257.0" promptText="Escolha um destino">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="25.0" layoutY="77.0" text="Origem:">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="410.0" layoutY="77.0" text="Destino:">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="startDate" accessibleRole="TREE_VIEW" layoutX="24.0" layoutY="174.0" prefHeight="36.0" prefWidth="257.0" promptText="Data de saida" showWeekNumbers="true" />
+                  <DatePicker fx:id="endDate" accessibleRole="TREE_VIEW" layoutX="409.0" layoutY="174.0" prefHeight="36.0" prefWidth="257.0" promptText="Data de chegada" showWeekNumbers="true" />
+                  <Label layoutX="25.0" layoutY="157.0" text="Data de Ida">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="410.0" layoutY="157.0" text="Data de Volta">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="flightCompanyInput" layoutX="25.0" layoutY="251.0" prefHeight="32.0" prefWidth="257.0" promptText="Escolha companhia">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="28.0" layoutY="229.0" text="Preferência de Companhia Aérea">
+                     <font>
+                        <Font name="Calibri" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="410.0" layoutY="229.0" text="Preferência de assento">
+                     <font>
+                        <Font name="Calibri" size="19.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="aisleRadioBtn" layoutX="419.0" layoutY="261.0" mnemonicParsing="false" onAction="#aisleRadioAction" prefHeight="17.0" prefWidth="74.0" text="Corredor" />
+                  <RadioButton fx:id="centerRadioBtn" layoutX="506.0" layoutY="261.0" mnemonicParsing="false" onAction="#centerRadioAction" text="Meio" />
+                  <RadioButton fx:id="windowRadioBtn" layoutX="587.0" layoutY="261.0" mnemonicParsing="false" onAction="#windowRadioAction" text="Janela" />
+                  <Label layoutX="28.0" layoutY="307.0" text="Possui malas para despache">
+                     <font>
+                        <Font name="Calibri" size="19.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="despacheYesRadioBtn" layoutX="24.0" layoutY="339.0" mnemonicParsing="false" onAction="#despacheYesAction" prefHeight="17.0" prefWidth="74.0" text="Sim" />
+                  <RadioButton fx:id="despacheNoRadioBtn" layoutX="81.0" layoutY="339.0" mnemonicParsing="false" onAction="#despacheNoAction" prefHeight="17.0" prefWidth="74.0" selected="true" text="Não" />
+                  <Button fx:id="flightSaveBtn" layoutX="424.0" layoutY="508.0" mnemonicParsing="false" onAction="#SaveFlightForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Salvar" />
+                  <Button fx:id="flightClearBtn" layoutX="15.0" layoutY="508.0" mnemonicParsing="false" onAction="#ClearFlightForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleClear" stylesheets="@mainScreen.css" text="Limpar" />
+                  <Label layoutX="235.0" layoutY="14.0" text="Passagens aérias">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
