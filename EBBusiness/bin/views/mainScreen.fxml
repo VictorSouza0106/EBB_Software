@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -87,41 +88,47 @@
       </ImageView>
       <Pane fx:id="newOrderForm" layoutX="236.0" layoutY="130.0" prefHeight="650.0" prefWidth="930.0" styleClass="setFormStyle" stylesheets="@mainScreen.css">
          <children>
-            <Pane prefHeight="42.0" prefWidth="930.0" style="-fx-background-color: GREEN;">
+            <Pane prefHeight="42.0" prefWidth="930.0" style="-fx-background-color: lightseagreen;">
                <children>
                   <Label layoutX="317.0" layoutY="3.0" prefHeight="36.0" prefWidth="297.0" text="Solicitação de orçamento">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Calibri Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
             <Pane layoutX="20.0" layoutY="50.0" prefHeight="585.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="FlightBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BringFlightForm" prefHeight="115.0" prefWidth="180.0">
+                  <Button fx:id="FlightBtn" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BringFlightForm" prefHeight="115.0" prefWidth="180.0" styleClass="setFlightButtonStyle" stylesheets="@mainScreen.css" text="Passagens Aéreas">
                      <cursor>
-                        <Cursor fx:constant="TEXT" />
+                        <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="10.0" layoutY="510.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="180.0" />
-                  <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="180.0">
+                  <Button layoutX="10.0" layoutY="510.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="180.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Concludo">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
                      <cursor>
-                        <Cursor fx:constant="TEXT" />
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="hotelBtn" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" onAction="#BringHotelForm" prefHeight="115.0" prefWidth="180.0" styleClass="setHotelButtonStyle" stylesheets="@mainScreen.css" text="Reserva de Hotel">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="180.0">
+                  <Button fx:id="carBtn" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" onAction="#BringCarForm" prefHeight="115.0" prefWidth="180.0" styleClass="setCarButtonStyle" stylesheets="@mainScreen.css" text="Aluguel de Carro">
                      <cursor>
-                        <Cursor fx:constant="TEXT" />
+                        <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="10.0" layoutY="385.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="180.0">
+                  <Button fx:id="employeeBtn" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="385.0" mnemonicParsing="false" onAction="#BringEmployeeForm" prefHeight="115.0" prefWidth="180.0" styleClass="setEmployeeButtonStyle" stylesheets="@mainScreen.css" text="Funcionário">
                      <cursor>
-                        <Cursor fx:constant="TEXT" />
+                        <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="flightForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css">
+            <Pane fx:id="flightForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css" visible="false">
                <children>
                   <TextField fx:id="originInput" layoutX="25.0" layoutY="109.0" prefHeight="36.0" prefWidth="257.0" promptText="Escolha uma origem">
                      <font>
@@ -165,13 +172,8 @@
                         <Font name="Calibri" size="19.0" />
                      </font>
                   </Label>
-                  <Label layoutX="410.0" layoutY="229.0" text="Preferência de assento">
-                     <font>
-                        <Font name="Calibri" size="19.0" />
-                     </font>
-                  </Label>
                   <RadioButton fx:id="aisleRadioBtn" layoutX="419.0" layoutY="261.0" mnemonicParsing="false" onAction="#aisleRadioAction" prefHeight="17.0" prefWidth="74.0" text="Corredor" />
-                  <RadioButton fx:id="centerRadioBtn" layoutX="506.0" layoutY="261.0" mnemonicParsing="false" onAction="#centerRadioAction" text="Meio" />
+                  <RadioButton fx:id="centerRadioBtn" layoutX="506.0" layoutY="261.0" mnemonicParsing="false" onAction="#centerRadioAction" selected="true" text="Meio" />
                   <RadioButton fx:id="windowRadioBtn" layoutX="587.0" layoutY="261.0" mnemonicParsing="false" onAction="#windowRadioAction" text="Janela" />
                   <Label layoutX="28.0" layoutY="307.0" text="Possui malas para despache">
                      <font>
@@ -187,6 +189,280 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
+                  <Label fx:id="invalidFlight" layoutX="405.0" layoutY="329.0" text="*Por favor preencha todos os campos" textFill="RED" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="hotelForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css" visible="false">
+               <children>
+                  <Label layoutX="236.0" layoutY="14.0" text="Reserva de hotel">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="77.0" text="Deseja Reservar Hotel na sua viagem">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="hotelFormYes" layoutX="28.0" layoutY="107.0" mnemonicParsing="false" onAction="#hotelFormYesAction" text="Sim">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="hotelFormNo" layoutX="138.0" layoutY="107.0" mnemonicParsing="false" onAction="#hotelFormNoAction" selected="true" text="Não">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <TextField fx:id="hotelCityInput" layoutX="26.0" layoutY="184.0" prefHeight="36.0" prefWidth="257.0" promptText="Escolha uma cidade">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="26.0" layoutY="154.0" text="Local da reserva">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="checkInDate" layoutX="28.0" layoutY="255.0" prefHeight="37.0" prefWidth="254.0" promptText="Escolha a data" />
+                  <Label layoutX="28.0" layoutY="225.0" text="Check-in">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="checkOutDate" layoutX="388.0" layoutY="253.0" prefHeight="37.0" prefWidth="254.0" promptText="Escolha a data" />
+                  <Label layoutX="388.0" layoutY="223.0" text="Check-out">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="309.0" text="Necessita de acesso a internet no hotel">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="interntYesRadioBtn" layoutX="28.0" layoutY="339.0" mnemonicParsing="false" onAction="#interntYesAction" text="Sim">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="interntNoRadioBtn" layoutX="138.0" layoutY="339.0" mnemonicParsing="false" onAction="#interntNoAction" selected="true" text="Não">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <Button fx:id="hotelSaveBtn" layoutX="424.0" layoutY="508.0" mnemonicParsing="false" onAction="#SaveHotelForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Salvar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="hotelClearBtn" layoutX="15.0" layoutY="508.0" mnemonicParsing="false" onAction="#ClearHotelForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleClear" stylesheets="@mainScreen.css" text="Limpar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </Pane>
+            <Pane fx:id="carForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css" visible="false">
+               <children>
+                  <TextField fx:id="carBrandInput" layoutX="25.0" layoutY="379.0" prefHeight="35.0" prefWidth="243.0" promptText="Digite a marca do carro">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font></TextField>
+                  <Label layoutX="25.0" layoutY="169.0" text="Data de Retirada">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="410.0" layoutY="169.0" text="Data de entrega">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="carStartDate" layoutX="25.0" layoutY="197.0" prefHeight="37.0" prefWidth="243.0" promptText="Escolha a data" />
+                  <DatePicker fx:id="carEndDate" layoutX="410.0" layoutY="197.0" prefHeight="37.0" prefWidth="243.0" promptText="escolha a data" />
+                  <Label layoutX="25.0" layoutY="261.0" text="Classificação">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="407.0" layoutY="267.0" text="Tipo do carro">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="347.0" text="Marca">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="87.0" text="Deseja Alugar um carro para sua viagem">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="carFormNo" layoutX="135.0" layoutY="117.0" mnemonicParsing="false" onAction="#carFormNoAction" selected="true" text="Não">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <TextField fx:id="classificationInput" layoutX="25.0" layoutY="293.0" prefHeight="35.0" prefWidth="243.0" promptText="Digite a classificação do carro">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font></TextField>
+                  <RadioButton fx:id="carFormYes" layoutX="25.0" layoutY="117.0" mnemonicParsing="false" onAction="#carFormYesAction" text="Sim">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <TextField fx:id="carTypeInput" layoutX="410.0" layoutY="299.0" prefHeight="35.0" prefWidth="243.0" promptText="Digite o tipo de carro">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font></TextField>
+                  <Button fx:id="carSaveBtn" layoutX="424.0" layoutY="508.0" mnemonicParsing="false" onAction="#SaveHotelForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Salvar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="carClearBtn" layoutX="15.0" layoutY="508.0" mnemonicParsing="false" onAction="#ClearCarForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleClear" stylesheets="@mainScreen.css" text="Limpar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="209.0" layoutY="14.0" text="Aluguel de Carro">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane fx:id="employeeForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css">
+               <children>
+                  <Label layoutX="253.0" layoutY="154.0" text="Validade do passaporte">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="employeeNameInput" layoutX="14.0" layoutY="107.0" prefHeight="42.0" prefWidth="223.0" promptText="Nome">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="employeeNewCodeInput" layoutX="491.0" layoutY="107.0" prefHeight="42.0" prefWidth="186.0" promptText="Código">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="employeeCpfInput" layoutX="251.0" layoutY="107.0" prefHeight="42.0" prefWidth="223.0" promptText="CPF">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="employeePassaportInput" layoutX="14.0" layoutY="186.0" prefHeight="42.0" prefWidth="223.0" promptText="Passaport">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="employeeCnhInput" layoutX="14.0" layoutY="266.0" prefHeight="42.0" prefWidth="223.0" promptText="CNH">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <DatePicker fx:id="employeePassaportValid" layoutX="251.0" layoutY="186.0" prefHeight="42.0" prefWidth="223.0" promptText="Escolha a data" />
+                  <DatePicker fx:id="employeeCnhValid" layoutX="251.0" layoutY="266.0" prefHeight="42.0" prefWidth="223.0" promptText="Escolha a data" />
+                  <TextField fx:id="employeeProgInput" layoutX="14.0" layoutY="347.0" prefHeight="42.0" prefWidth="223.0" promptText="Progama Fidelidade">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="employeeEspecialInput" layoutX="253.0" layoutY="347.0" prefHeight="42.0" prefWidth="220.0" promptText="Necessidade especial">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="employeeSaveBtn1" layoutX="424.0" layoutY="508.0" mnemonicParsing="false" onAction="#SaveHotelForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Salvar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="employeeClearBtn1" layoutX="15.0" layoutY="508.0" mnemonicParsing="false" onAction="#ClearCarForm" prefHeight="37.0" prefWidth="243.0" styleClass="setButtonFormStyleClear" stylesheets="@mainScreen.css" text="Limpar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="15.0" layoutY="75.0" text="Nome">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="253.0" layoutY="75.0" text="CPF">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="491.0" layoutY="75.0" text="Codigo">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="154.0" prefHeight="32.0" prefWidth="122.0" text="Passaporte">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="234.0" prefHeight="32.0" prefWidth="122.0" text="CNH">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="253.0" layoutY="234.0" prefHeight="32.0" prefWidth="173.0" text="Validade da CNH">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="315.0" prefHeight="32.0" prefWidth="200.0" text="Progama Fidelidade">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="253.0" layoutY="315.0" prefHeight="32.0" prefWidth="200.0" text="Necessidade Especial">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="134.0" layoutY="14.0" text="Selecionar Funcionario para Viagem">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="employeeArea" layoutX="491.0" layoutY="185.0" prefHeight="202.0" prefWidth="186.0" />
+                  <Label layoutX="491.0" layoutY="154.0" text="Funcionarios para o Voo">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="addNewEmployeeBtn" layoutX="15.0" layoutY="412.0" mnemonicParsing="false" onAction="#SaveHotelForm" prefHeight="42.0" prefWidth="215.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Adicionar funcionario novo">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Calibri" size="10.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="addEmployeeBtn" layoutX="256.0" layoutY="412.0" mnemonicParsing="false" onAction="#SaveHotelForm" prefHeight="42.0" prefWidth="243.0" styleClass="setButtonFormStyleSucess" stylesheets="@mainScreen.css" text="Adicionar funcionario cadastrado">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Calibri" size="10.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="employeeCodeInput" layoutX="520.0" layoutY="412.0" prefHeight="42.0" prefWidth="156.0" promptText="Codigo">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
          </children>

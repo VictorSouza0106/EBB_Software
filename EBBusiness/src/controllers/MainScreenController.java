@@ -1,5 +1,11 @@
 package controllers;
 
+
+
+import javax.smartcardio.Card;
+
+import com.sun.corba.se.spi.orbutil.fsm.Action;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +18,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.TextAlignment;
 import models.UserClassModel;
+import models.CarFormModel;
 import models.FligthFormModel;
+import models.HotelFormModel;
 
 public class MainScreenController {
 	
@@ -67,7 +75,16 @@ public class MainScreenController {
 	    @FXML
 	    private Button FlightBtn;
 	    
-		    //Flight form componets
+	    @FXML
+	    private Button hotelBtn;
+	    
+	    @FXML
+	    private Button carBtn;
+	    
+	    @FXML
+	    private Button employeeBtn;
+	    
+	    //Flight form componetes
 		    
 			    @FXML
 			    private Pane flightForm;
@@ -110,6 +127,81 @@ public class MainScreenController {
 			    
 			    @FXML
 			    private RadioButton despacheNoRadioBtn;
+			    
+			    @FXML
+			    private Label invalidFlight;
+			    
+		//Hotel form componetes
+			    
+			    @FXML
+			    private Pane hotelForm;
+			    
+			    @FXML
+			    private RadioButton hotelFormYes;
+			    
+			    @FXML
+			    private RadioButton hotelFormNo;
+			    
+			    @FXML
+			    private TextField hotelCityInput;
+			    
+			    @FXML
+			    private DatePicker checkInDate;
+			    
+			    @FXML
+			    private DatePicker checkOutDate;
+			    
+			    @FXML
+			    private RadioButton interntYesRadioBtn;
+			    
+			    @FXML
+			    private RadioButton interntNoRadioBtn;
+			    
+			    @FXML
+			    private Button hotelClearBtn;
+			    
+			    @FXML
+			    private Button hotelSaveBtn;
+			    
+			    //Car form componentes
+			    
+			    @FXML
+			    private Pane carForm;
+			    
+			    @FXML
+			    private RadioButton carFormYes;
+			    
+			    @FXML
+			    private RadioButton carFormNo;
+			    
+			    @FXML
+			    private DatePicker carStartDate;
+			    
+			    @FXML
+			    private DatePicker carEndDate;
+			    
+			    @FXML
+			    private TextField classificationInput;
+			    
+			    @FXML
+			    private TextField carTypeInput;
+			    
+			    @FXML
+			    private TextField carBrandInput;
+			    
+			    @FXML
+			    private Button carClearButton;
+			    
+			    @FXML
+			    private Button carSaveButton;
+			    
+			    //Employee Form Componetes
+			    
+			    @FXML
+			    private Pane employeeForm;
+			    
+			    
+			    
 
     
     
@@ -140,8 +232,22 @@ public class MainScreenController {
     	windowRadioBtn.setSelected(false);
     }
     
+    void setFormsDefalt() {
+    	
+    	FlightBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
+    	hotelBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
+    	carBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
+    	employeeBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
+    	flightForm.setVisible(false);
+    	hotelForm.setVisible(false);
+    	carForm.setVisible(false);
+    	employeeForm.setVisible(false);
+    	
+    }
+    
     @FXML
     void BringMainScreen(MouseEvent event) {
+    	
     	
     	PaneLoading.setOnMouseMoved(null);
     	
@@ -149,8 +255,6 @@ public class MainScreenController {
     	
     	companyLabel.setText(UserClassModel.getUserCompanyName());
     	companyLabel.setTextAlignment(TextAlignment.CENTER);
-    	
-    	System.out.println(UserClassModel.getUserCompanyName());
     	    	
     }
 
@@ -170,9 +274,7 @@ public class MainScreenController {
     	navBar.setVisible(false);
     	
     	showBtn.setVisible(true);
-    	hideBtn.setVisible(false);
-    	
-    	System.out.println("hide pressed");  	
+    	hideBtn.setVisible(false);	
     	
 
     }
@@ -188,6 +290,7 @@ public class MainScreenController {
     @FXML
     void BringFlightForm(ActionEvent event) {
 
+    	setFormsDefalt();
     	setButtonSelect(FlightBtn);
     	
     	flightForm.setVisible(true);
@@ -282,12 +385,39 @@ public class MainScreenController {
     @FXML
     void SaveFlightForm (ActionEvent event) {
     	
-    		FligthFormModel.setFlightOrigin(originInput.getText());
-    		FligthFormModel.setFlightDestiny(destinyInput.getText());
+    		//Guardando os valores na classe FlightFormModel
+    		try {
+    		
+    		if(originInput.getText().trim().isEmpty() == true || destinyInput.getText().trim().isEmpty() == true || flightCompanyInput.getText().trim().isEmpty() == true) {
+    		
+    			invalidFlight.setVisible(true);
+    			
+    			
+    			
+    		} else {    	
+    			
+    			FligthFormModel.setFlightOrigin(originInput.getText());
+        		FligthFormModel.setFlightDestiny(destinyInput.getText());
+        		FligthFormModel.setFlightCompanyAirline(flightCompanyInput.getText());
+        		
+
+    			invalidFlight.setVisible(false);
+    			
+    			
+    		}
+    		
     		FligthFormModel.setFlightStartDate(startDate.getValue().toString());
     		FligthFormModel.setFlightEndDate(endDate.getValue().toString());
-    		FligthFormModel.setFlightCompanyAirline(flightCompanyInput.getText());
-	    		
+    		
+    		
+			
+    		}catch (Exception e) {
+    			
+    			invalidFlight.setVisible(true);   			
+			}
+    		
+    		//Setando os RadioButton das poltronas
+    		
 	    		if (aisleRadioBtn.isSelected() == true) {
 	    			
 	    			FligthFormModel.setFlightSeatPosition("Aisle");
@@ -301,6 +431,8 @@ public class MainScreenController {
 	    			FligthFormModel.setFlightSeatPosition("Window");
 				}
 	    		
+	    		//Setando o RadioButton para true ou false 
+	    		
 	    		if (despacheYesRadioBtn.isSelected() == true) {
 	    			
 	    			FligthFormModel.setFlightDespache(true);
@@ -309,7 +441,192 @@ public class MainScreenController {
 					
 					FligthFormModel.setFlightDespache(false);
 				}
+	    		
+	    		//Verificando se os campos estao validos
+	    		
     }
+    
+    @FXML
+    void BringHotelForm (ActionEvent event) {
+    	
+    	setFormsDefalt();
+    	
+    	setButtonSelect(hotelBtn);
+    	
+    	hotelForm.setVisible(true);
+    }
+    
+     @FXML
+     void hotelFormNoAction (ActionEvent event) {
+    	 
+    	 hotelFormNo.setSelected(true);
+    	 hotelFormYes.setSelected(false);
+     }
+      
+     @FXML
+     void hotelFormYesAction (ActionEvent event) {
+    	 
+    	 hotelFormNo.setSelected(false);
+    	 hotelFormYes.setSelected(true);
+     }
+     
+     @FXML
+     void interntNoAction (ActionEvent event) {
+    	 
+    	 interntNoRadioBtn.setSelected(true);
+    	 interntYesRadioBtn.setSelected(false);
+     }
+     
+     @FXML
+     void interntYesAction (ActionEvent event) {
+    	 
+    	 interntNoRadioBtn.setSelected(false);
+    	 interntYesRadioBtn.setSelected(true);
+     }
+ 
+     @FXML 
+     void ClearHotelForm (ActionEvent event) {
+    	 
+    	 	hotelFormYes.setSelected(false);
+    	 	hotelFormNo.setSelected(true);
+    	 	
+    	 	interntNoRadioBtn.setSelected(true);
+       	 	interntYesRadioBtn.setSelected(false);
+       	 
+       	 
+    	 	hotelCityInput.setText("");
+    	 	checkInDate.getEditor().clear();
+    	 	checkOutDate.getEditor().clear();
+     }
+ 
+     @FXML
+     void SaveHotelForm (ActionEvent event) {
+    	 
+    	 if (hotelFormYes.isSelected() == true) {
+    		 
+    		 HotelFormModel.setBookingHotel(true);
+		
+    	 } else {
+    		
+    		 HotelFormModel.setBookingHotel(false);
+    	 }
+    	 
+    	 if(hotelCityInput.getText() == "") {
+    		 
+    	 } else {
+
+        	 HotelFormModel.setHotelCity(hotelCityInput.getText());
+    	 }
+    	 
+    	 if (interntYesRadioBtn.isSelected() == true) {
+			
+    		 HotelFormModel.setHasInternet(true);
+    		 
+		} else {
+			
+   		 HotelFormModel.setHasInternet(false);
+		
+		}
+    	 
+    	 
+    	 try {
+    		 
+        	 HotelFormModel.setChekInDate(checkInDate.getValue().toString()); 
+        	 HotelFormModel.setCheckOutDate(checkOutDate.getValue().toString());
+        	 
+    	 } catch (Exception e) {
+			
+		}
+    	 
+    	 System.out.println(HotelFormModel.getCheckOutDate());
+    	 System.out.println(HotelFormModel.getChekInDate());
+    	 System.out.println(HotelFormModel.getHotelCity());
+    	 System.out.println(HotelFormModel.isBookingHotel());
+    	 System.out.println(HotelFormModel.isHasInternet());
+
+    	 
+     }
+     
+     @FXML
+     void BringCarForm (ActionEvent event) {
+     	
+     	setFormsDefalt();
+     	
+     	setButtonSelect(carBtn);
+     	
+     	carForm.setVisible(true);
+     }
+     
+     @FXML
+     void carFormYesAction(ActionEvent event) {
+    	 
+    	 carFormNo.setSelected(false);
+    	 carFormYes.setSelected(true);
+    	 
+     }
+     
+     @FXML
+     void carFormNoAction(ActionEvent event) {
+    	 
+    	 carFormNo.setSelected(true);
+    	 carFormYes.setSelected(false);
+    	 
+     }
+     
+     @FXML
+     void ClearCarForm (ActionEvent event) {
+    	 
+    	 carFormNo.setSelected(true);
+    	 carFormYes.setSelected(false);
+    	 carStartDate.getEditor().clear();
+    	 carEndDate.getEditor().clear();
+    	 classificationInput.setText("a");
+    	 carTypeInput.setText("a");
+    	 carBrandInput.setText("a");
+    	 
+    	 System.out.println("clear");
+    	 
+    	 
+     }
+     
+     @FXML
+     void SaveCarForm (ActionEvent event) {
+    	 
+    	 
+    	 
+    	 if(carFormYes.isSelected() == true) {
+    		 CarFormModel.setRentCar(true);
+    	 } else {
+    		 CarFormModel.setRentCar(false);
+    	 }
+    	 
+    	 CarFormModel.setClassification(classificationInput.getText());
+    	 CarFormModel.setTypeCar(carTypeInput.getText());
+    	 CarFormModel.setBrandCar(carBrandInput.getText());
+    	 
+    	 try {
+    		 
+    		 CarFormModel.setCarStartDate(carStartDate.getValue().toString());
+    		 CarFormModel.setCarEndDate(carEndDate.getValue().toString());
+    	 } catch (Exception e) {
+			
+    		 System.out.println("erro:" + e.getMessage());
+		}
+     }
+     
+     @FXML
+     void BringEmployeeForm(ActionEvent event) {
+          	
+          	setFormsDefalt();
+          	
+          	setButtonSelect(employeeBtn);
+          	
+          	employeeForm.setVisible(true);
+          
+    	 
+    	 
+     }
+     
      
      
 }
