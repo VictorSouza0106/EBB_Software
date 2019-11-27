@@ -1,6 +1,6 @@
 // - Software Name - "Easy Business Travel Booking"
 
-// - Software Version - 0.2.0
+// - Software Version - 1.0.1
 
 // - Linguagem de progamação utilizada no projeto
 Java - JDK 8
@@ -26,3 +26,14 @@ Primeiro Número - Versao que foi lançada para uso em operação.
 Segundo Número - Quantidade de funcionalidade adicionadas.
 
 Terceiro Número - Quantidade de Bug Fix realizadas nessa versão.
+
+--Funcionalidades do software
+
+*Login e logout baseado no banco de dados da EBBusiness
+*Criação de pedidos e armazenamento no Banco de dados
+
+
+--Bug Fix e Upgrades
+
+*Revisão do codigo
+*Comentario nas funcionalidades dos codigos
