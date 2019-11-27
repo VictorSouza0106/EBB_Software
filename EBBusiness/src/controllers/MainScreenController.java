@@ -2,10 +2,7 @@ package controllers;
 
 
 
-import javax.smartcardio.Card;
-
-import com.sun.corba.se.spi.orbutil.fsm.Action;
-
+import java.awt.TextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -200,11 +197,41 @@ public class MainScreenController {
 			    @FXML
 			    private Pane employeeForm;
 			    
+			    @FXML
+			    private TextField employeeNameInput;
+			    
+			    @FXML
+			    private TextField employeeCpfInput;
+			    
+			    @FXML
+			    private TextField employeeCodeInput;
+			    
+			    @FXML
+			    private TextField employeePassaportInput;
+			    
+			    @FXML
+			    private DatePicker employeePassaaportValid;
+			    
+			    @FXML
+			    private TextField employeeCnhInput;
+			    
+			    @FXML
+			    private DatePicker employeeCnhValid;
+			    
+			    @FXML
+			    private TextField employeeProgInput;
+			    
+			    @FXML
+			    private TextField employeeSpecialInput;
+			    
+			    @FXML
+			    private TextArea a;
+			    
 			    
 			    
 
     
-    
+    //Pega os botoes do Menu inicial e seta a cor deles para uma cor default
     void setButtonStyleDefault() {
     	
     	newOrderBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
@@ -215,6 +242,8 @@ public class MainScreenController {
     	helpBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
     }
     
+    
+    //Pega o botao selecionado e coloca uma cor no style dele
     void setButtonSelect(Button buttonID) {
     	
     	setButtonStyleDefault();
@@ -222,7 +251,7 @@ public class MainScreenController {
     	buttonID.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #23d9cf 50%, #20b2aa 100%);");
     	
     }
-   
+   //Pega os RadioButton da tela flight Form e deseleciona os botoes  
     void setSeatEmpty() {
     	
     	aisleRadioBtn.setSelected(false);
@@ -232,6 +261,7 @@ public class MainScreenController {
     	windowRadioBtn.setSelected(false);
     }
     
+    //Deixa todos os formularios invisiveis e reseta a cor dos botoes para a cor padrao
     void setFormsDefalt() {
     	
     	FlightBtn.setStyle("-fx-background-color: linear-gradient(#F7f7f7 0%, #d7d7d7 50%, #a7a7a7 100%);");
@@ -244,7 +274,7 @@ public class MainScreenController {
     	employeeForm.setVisible(false);
     	
     }
-    
+    //Tras a tela principal para a frente (utilizada para que fosse possivel popular os dados assim que rendeniza na tela)
     @FXML
     void BringMainScreen(MouseEvent event) {
     	
@@ -257,103 +287,109 @@ public class MainScreenController {
     	companyLabel.setTextAlignment(TextAlignment.CENTER);
     	    	
     }
+    
+    //Controles da barra lateral de navegação
+			@FXML
+		    void show_navBar(MouseEvent event) {
+		    	
+		    	navBar.setVisible(true);
+		    	
+		    	showBtn.setVisible(false);
+		    	hideBtn.setVisible(true);
+		
+		    }
+		
+		    @FXML
+		    void hide_navBar(MouseEvent event) {
+		    	
+		    	navBar.setVisible(false);
+		    	
+		    	showBtn.setVisible(true);
+		    	hideBtn.setVisible(false);	
+    	
 
-	@FXML
-    void show_navBar(MouseEvent event) {
-    	
-    	navBar.setVisible(true);
-    	
-    	showBtn.setVisible(false);
-    	hideBtn.setVisible(true);
-
-    }
-
-    @FXML
-    void hide_navBar(MouseEvent event) {
-    	
-    	navBar.setVisible(false);
-    	
-    	showBtn.setVisible(true);
-    	hideBtn.setVisible(false);	
-    	
-
-    }
+		    }
    
-    @FXML
-    void newOrderAction(ActionEvent event) {
-    	
-    	setButtonSelect(newOrderBtn);
-    	
-    	newOrderForm.setVisible(true);
-    }
-    
-    @FXML
-    void BringFlightForm(ActionEvent event) {
-
-    	setFormsDefalt();
-    	setButtonSelect(FlightBtn);
-    	
-    	flightForm.setVisible(true);
-    	
-    }
-    
-    @FXML
-    void historyAction(ActionEvent event) {
-    	
-    	setButtonSelect(historyBtn);
-    }
-
-    @FXML
-    void messageAction(ActionEvent event) {
-    	
-    	setButtonSelect(messageBtn);
-    }
-
-    @FXML
-    void financalAction(ActionEvent event) {
-    	
-    	setButtonSelect(financalBtn);
-    }
-
-    @FXML
-    void infoAction(ActionEvent event) {
-    	
-    	setButtonSelect(infoBtn);
-    }
-    
-    @FXML
-    void helpAction(ActionEvent event) {
-    	
-    	setButtonSelect(helpBtn);
-    }
-    
-    @FXML
-    void aisleRadioAction(ActionEvent event) {
-    	
-	    setSeatEmpty();
+	//Açoes do botao da barra de navegação lateral
+		    @FXML
+		    void newOrderAction(ActionEvent event) {
+		    	
+		    	setButtonSelect(newOrderBtn);
+		    	
+		    	newOrderForm.setVisible(true);
+		    }
+		    
+		    
+		    @FXML
+		    void historyAction(ActionEvent event) {
+		    	
+		    	setButtonSelect(historyBtn);
+		    }
+		
+		    @FXML
+		    void messageAction(ActionEvent event) {
+		    	
+		    	setButtonSelect(messageBtn);
+		    }
+		
+		    @FXML
+		    void financalAction(ActionEvent event) {
+		    	
+		    	setButtonSelect(financalBtn);
+		    }
+		
+		    @FXML
+		    void infoAction(ActionEvent event) {
+		    	
+		    	setButtonSelect(infoBtn);
+		    }
+		    
+		    @FXML
+		    void helpAction(ActionEvent event) {
+		    	
+		    	setButtonSelect(helpBtn);
+		    }
+	
+	//Tras o form de viagens
+	@FXML
+	void BringFlightForm(ActionEvent event) {
+		
+		setFormsDefalt();
+		setButtonSelect(FlightBtn);
+		flightForm.setVisible(true);
+		    
+	
+	}
+		
+		//Configuração dos botoes de RadioButton para a posição da poltrona
+	    @FXML
+	    void aisleRadioAction(ActionEvent event) {
+	    	
+		    setSeatEmpty();
+		    
+		    aisleRadioBtn.setSelected(true);
+	    	
+	    }
 	    
-	    aisleRadioBtn.setSelected(true);
-    	
-    }
-    
-    @FXML
-    void centerRadioAction(ActionEvent event) {
-    	
-	    setSeatEmpty();
+	    @FXML
+	    void centerRadioAction(ActionEvent event) {
+	    	
+		    setSeatEmpty();
+		    
+		    centerRadioBtn.setSelected(true);
+	    	
+	    }
 	    
-	    centerRadioBtn.setSelected(true);
-    	
-    }
+	    @FXML
+	    void windowRadioAction(ActionEvent event) {
+	    	
+		    setSeatEmpty();
+		    
+		    windowRadioBtn.setSelected(true);
+	    	
+	    }
     
-    @FXML
-    void windowRadioAction(ActionEvent event) {
-    	
-	    setSeatEmpty();
-	    
-	    windowRadioBtn.setSelected(true);
-    	
-    }
-    
+	//Configuração dos RadioButton para a opção de despache
     @FXML
     void despacheYesAction(ActionEvent event) {
     
@@ -370,6 +406,7 @@ public class MainScreenController {
     	
     }
     
+    //Limpa os dados dos campos no form de viagens    
     @FXML
     void ClearFlightForm (ActionEvent event) {
     	
@@ -382,6 +419,7 @@ public class MainScreenController {
     	
     }
     
+    //Salva no Moldel de viagem os dados passados pelo usuário    
     @FXML
     void SaveFlightForm (ActionEvent event) {
     	
@@ -446,6 +484,7 @@ public class MainScreenController {
 	    		
     }
     
+    //Tras o form de hotel
     @FXML
     void BringHotelForm (ActionEvent event) {
     	
@@ -456,34 +495,36 @@ public class MainScreenController {
     	hotelForm.setVisible(true);
     }
     
-     @FXML
-     void hotelFormNoAction (ActionEvent event) {
-    	 
-    	 hotelFormNo.setSelected(true);
-    	 hotelFormYes.setSelected(false);
-     }
-      
-     @FXML
-     void hotelFormYesAction (ActionEvent event) {
-    	 
-    	 hotelFormNo.setSelected(false);
-    	 hotelFormYes.setSelected(true);
-     }
+    //configuração se o cliente quer ou nao alugar um hotel
+		    @FXML
+		    void hotelFormNoAction (ActionEvent event) {
+		    	 
+		    	 hotelFormNo.setSelected(true);
+		    	 hotelFormYes.setSelected(false);
+		     }
+		      
+		     @FXML
+		     void hotelFormYesAction (ActionEvent event) {
+		    	 
+		    	 hotelFormNo.setSelected(false);
+		    	 hotelFormYes.setSelected(true);
+		     }
      
+	 //configuração se o cliente quer ou nao internet no hotel
      @FXML
-     void interntNoAction (ActionEvent event) {
-    	 
-    	 interntNoRadioBtn.setSelected(true);
-    	 interntYesRadioBtn.setSelected(false);
-     }
-     
-     @FXML
-     void interntYesAction (ActionEvent event) {
-    	 
-    	 interntNoRadioBtn.setSelected(false);
-    	 interntYesRadioBtn.setSelected(true);
-     }
- 
+		     void interntNoAction (ActionEvent event) {
+		    	 
+		    	 interntNoRadioBtn.setSelected(true);
+		    	 interntYesRadioBtn.setSelected(false);
+		     }
+		     
+		     @FXML
+		     void interntYesAction (ActionEvent event) {
+		    	 
+		    	 interntNoRadioBtn.setSelected(false);
+		    	 interntYesRadioBtn.setSelected(true);
+		     }
+	 //Limpa os campos do form Hotel
      @FXML 
      void ClearHotelForm (ActionEvent event) {
     	 
@@ -499,6 +540,8 @@ public class MainScreenController {
     	 	checkOutDate.getEditor().clear();
      }
  
+     
+     //Salva os campos no model do hotel
      @FXML
      void SaveHotelForm (ActionEvent event) {
     	 
@@ -547,6 +590,7 @@ public class MainScreenController {
     	 
      }
      
+     //Tras o form para aluguel de carro
      @FXML
      void BringCarForm (ActionEvent event) {
      	
@@ -556,23 +600,25 @@ public class MainScreenController {
      	
      	carForm.setVisible(true);
      }
-     
-     @FXML
-     void carFormYesAction(ActionEvent event) {
-    	 
-    	 carFormNo.setSelected(false);
-    	 carFormYes.setSelected(true);
-    	 
-     }
-     
-     @FXML
-     void carFormNoAction(ActionEvent event) {
+    
+     //configura os RadioButton para verificar se o usuario quer alugar carro
+	     @FXML
+	     void carFormYesAction(ActionEvent event) {
+	    	 
+	    	 carFormNo.setSelected(false);
+	    	 carFormYes.setSelected(true);
+	    	 
+	     }
+	     
+	     @FXML
+	     void carFormNoAction(ActionEvent event) {
     	 
     	 carFormNo.setSelected(true);
     	 carFormYes.setSelected(false);
     	 
      }
      
+	 //Limpa os campos do form de carros
      @FXML
      void ClearCarForm (ActionEvent event) {
     	 
@@ -589,6 +635,7 @@ public class MainScreenController {
     	 
      }
      
+     //Salva os campos de form de carros no Model
      @FXML
      void SaveCarForm (ActionEvent event) {
     	 
@@ -614,6 +661,7 @@ public class MainScreenController {
 		}
      }
      
+     //tras o form de cadastro de funcionario
      @FXML
      void BringEmployeeForm(ActionEvent event) {
           	

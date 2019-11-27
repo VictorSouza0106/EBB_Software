@@ -81,8 +81,14 @@ public class DatabaseController {
 
 		return userLogado;
 	}
-	
-	
+
+	/**
+	 * Verifica se este usuario esta dentro do Banco de dados pesquisando atraves do input colocado
+	 * 
+	 * @param userLogin
+	 * @param userPass
+	 * @return - retorna se o usuario e valido e esta no banco
+	 */
 	public boolean getPasswordByName(String userLogin,String userPass) {
 
 		
@@ -115,6 +121,12 @@ public class DatabaseController {
 		
 		}
 	
+	/**
+	 * Pega do banco de dados qual e o nivel de usuario atraves do nome
+	 * 
+	 * @param userLogin
+	 * @return - o nivel do usuario
+	 */
 	public int getUserRoleByUser(String userLogin) {
 		
 		int userRole = 0;
@@ -140,6 +152,12 @@ public class DatabaseController {
 		
 	}
 
+	/** 
+	 * Pega o nome da empresa que o usuario trabalha atraves do nome de usuario
+	 * 
+	 * @param UserLogin
+	 * @return
+	 */
 	public String getCompanyByUser(String UserLogin) {
 		
 		String companyName = null;

@@ -86,7 +86,7 @@
             <Image url="@../images/menuIcon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="newOrderForm" layoutX="236.0" layoutY="130.0" prefHeight="650.0" prefWidth="930.0" styleClass="setFormStyle" stylesheets="@mainScreen.css">
+      <Pane fx:id="newOrderForm" layoutX="236.0" layoutY="130.0" prefHeight="650.0" prefWidth="930.0" styleClass="setFormStyle" stylesheets="@mainScreen.css" visible="false">
          <children>
             <Pane prefHeight="42.0" prefWidth="930.0" style="-fx-background-color: lightseagreen;">
                <children>
@@ -337,7 +337,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane fx:id="employeeForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css">
+            <Pane fx:id="employeeForm" layoutX="220.0" layoutY="61.0" prefHeight="564.0" prefWidth="691.0" styleClass="setInternFormStyle" stylesheets="@mainScreen.css" visible="false">
                <children>
                   <Label layoutX="253.0" layoutY="154.0" text="Validade do passaporte">
                      <font>

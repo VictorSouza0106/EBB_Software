@@ -376,7 +376,7 @@
                         <Font name="Calibri" size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="employeeEspecialInput" layoutX="253.0" layoutY="347.0" prefHeight="42.0" prefWidth="220.0" promptText="Necessidade especial">
+                  <TextField fx:id="employeeSpecialInput" layoutX="253.0" layoutY="347.0" prefHeight="42.0" prefWidth="220.0" promptText="Necessidade especial">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>

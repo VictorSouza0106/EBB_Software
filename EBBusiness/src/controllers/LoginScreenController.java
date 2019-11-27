@@ -35,7 +35,7 @@ public class LoginScreenController {
     @FXML
     private Label infoLabel;
 	
-
+    //Verifica se o usuario esta cadastrad no sistema
 	@FXML
 	void isValid(ActionEvent event) {
 		
